@@ -15,6 +15,7 @@ p {
 
 nav {
   border-bottom: 1px solid #999;
+  margin-bottom: 4rem;
 }
 
 nav li {
@@ -29,4 +30,12 @@ nav li a.active {
 footer {
   border-top: 1px solid #999;
   padding-top: 2rem;
+  margin-top: 4rem;
+}
+
+.project-summary {
+  border: 1px solid #999;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  max-width: 40%;
 }
