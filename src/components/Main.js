@@ -1,5 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import queryString from 'query-string';
+
+
 import ProjectDetails from './ProjectDetails';
 import ProjectList from './ProjectList';
 
@@ -10,18 +13,19 @@ function Main() {
 
   return (
     <Switch>
+
       <Route path="/" exact>
         display homepage
       </Route>
 
 
-      <Route path="/projects" exact>
-        <ProjectList projectsArr={projectsArr} />
-      </Route>
+      <Route path="/projects" exact render={ (routeProps) => {
+        const query = queryString.parse(routeProps.location.search); //parse query string
+        return <ProjectList projectsArr={projectsArr} filterBy={query.technology} />
+      }} />
 
 
       <Route path="/projects/:id" render={ routeProps => {
-
         const requestedProject = projectsArr.find( project => {
           return project.id == routeProps.match.params.id;
         });
